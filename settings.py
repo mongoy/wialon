@@ -1,4 +1,3 @@
-TOKEN = "4e0158d1795214dc3d698c34e160b9720EA5B713ED26EA81D907FD83716C751EDF7D4C90"  # токен 23.12.20 - 30 дней
 URL = "https://hst-api.wialon.com/wialon/ajax.html?"
 comand_str_token = "svc=token/login&params="  # вход
 comand_str_items = "svc=core/search_items&params="  # поиск элементов

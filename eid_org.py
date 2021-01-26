@@ -1,6 +1,7 @@
 import requests
 import json
 from settings import *
+from token_org import TOKEN
 
 
 # строка запроса
@@ -55,5 +56,6 @@ def logout(eid_org):
     print("\n", "Сессия закрыта", response.json())
 
 
-# eid()
-logout(eid())
+# CONST_SID = eid()
+#
+# logout(CONST_SID)
