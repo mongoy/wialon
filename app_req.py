@@ -20,7 +20,7 @@ CONST_SID = eid()
 # search_reports(CONST_SID)
 
 # 4 Получение пробега  и данных по расходу топлива за период RUB
-# report(CONST_SID)
+report(CONST_SID)
 
 # 5 Экспорт
 # export_to_xlsx(CONST_SID)
@@ -39,11 +39,11 @@ def send_sub():
     msg_subj = "Для Юдиной Анастасии. Тестовое письмо"
     msg_text = "Wialon. Список групп транспортных средств на " + str(now.strftime("%d-%m-%Y %H:%M")) + "\n Алексей"
     send_email(msg_subj, msg_text, files)
+# send_sub()
 
-
-send_sub()
 
 # 8
+
 
 # Выход
 logout(CONST_SID)

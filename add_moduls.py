@@ -9,7 +9,8 @@ from getpass import getpass
 # Импортируем библиотеку по работе с SMTP
 import smtplib
 # Добавляем необходимые подклассы - MIME-типы
-import mimetypes                                          # Импорт класса для обработки неизвестных MIME-типов, базирующихся на расширении файла
+import mimetypes                                          # Импорт класса для обработки неизвестных MIME-типов,
+                                                          # базирующихся на расширении файла
 from email import encoders                                # Импортируем энкодер
 from email.mime.base import MIMEBase                      # Общий тип
 from email.mime.text import MIMEText                      # Текст/HTML
@@ -24,9 +25,11 @@ def DataTime_to_sec(year, month, date, hour, minutes, seconds):
     :return: date_unix
     """
     dt = datetime(year, month, date, hour, minutes, seconds)
+    print("Дата и время", dt.strftime("%d-%m-%Y %H:%M"))
     # timestamp = dt.replace(tzinfo=timezone.utc).timestamp()  # с учётом текущего часового пояса
     timestamp = dt.replace().timestamp()
     date_unix = int(timestamp)
+    print(date_unix)
     return date_unix
 
 

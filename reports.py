@@ -1,6 +1,7 @@
 # Отчёты
 import requests
 import json
+import datetime
 from settings import *
 from add_moduls import DataTime_to_sec, json_print_save, json_print
 
@@ -29,32 +30,36 @@ def report(eid_org):
     ТС "Камаз к678ст" ID 21369701 20.01.2021 00:00 - 21.01.2021 06:31
     :return:
     """
-    dt = DataTime_to_sec(2021, 1, 20, 0, 0, 0)
-    date_first = dt  # Дата начала
-    dt = DataTime_to_sec(2021, 1, 21, 14, 0, 0)
-    date_last = dt  # Дата окончания
+    # dt = DataTime_to_sec(2021, 1, 28, 0, 0, 0)
+    # date_first = dt  # Дата начала
+    #
+    # dt = DataTime_to_sec(2021, 1, 29, 0, 0, 0)
+    # date_last = dt  # Дата окончания
+    now = datetime.datetime.now().strftime("%d-%m-%Y 00:00:00")  # сегодня 00:00:00
+    yesterday = (datetime.datetime.now() - datetime.timedelta(days=1)).strftime("%d-%m-%Y 00:00:00")  # вчера 00:00:00
+
     params = {"reportResourceId": 21345040, "reportTemplateId": 1, "reportObjectId": 21369701, "reportObjectSecId": 0,
               "interval": {"from": date_first, "to": + date_last, "flags": 0}}
     data = json.dumps(params, separators=(',', ':'))
     req_string = f"{URL}{comand_str_report}{data}&sid={eid_org}"
-    # print(req_string)
+    print(req_string)
     response = requests.get(req_string)
     # print("Отчёт =", response.json(), "\n")
     # на экран
     json_print(response.json())
     # в файл
-    json_print_save("OUT\\RepTC_1.json", response.json())
+    # json_print_save("OUT\\RepTC_1.json", response.json())
 
-    # Результаты отчёта
-    params = {'tableIndex': 0, "indexFrom": 0, "indexTo": 0}
-    data = json.dumps(params, separators=(',', ':'))
-    req_string = f"{URL}{comand_str_rep_data}{data}&sid={eid_org}"
+    # # Результаты отчёта
+    # params = {'tableIndex': 0, "indexFrom": 0, "indexTo": 0}
+    # data = json.dumps(params, separators=(',', ':'))
+    # req_string = f"{URL}{comand_str_rep_data}{data}&sid={eid_org}"
     # print(req_string)
-    response = requests.get(req_string)
-    print("Отчёт (данные) =", response.json(), "\n")
-    # на экран
-    json_print(response.json())
-    # в файл
-    json_print_save("OUT\\RepTC_2.json", response.json())
+    # response = requests.get(req_string)
+    # print("Отчёт (данные) =", response.json(), "\n")
+    # # на экран
+    # json_print(response.json())
+    # # в файл
+    # # json_print_save("OUT\\RepTC_2.json", response.json())
 
     return

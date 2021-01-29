@@ -2,13 +2,13 @@ import requests
 import json
 from settings import *
 from settings_org import TOKEN
+from add_moduls import json_print_save
 
 
 # строка запроса
 def req_string(PARAMS, SVC):
     """
     Формируем строку запроса
-    :param URL:
     :param PARAMS: пармметры команды
     :param SVC: комнда
     :return: строка запроса
@@ -37,6 +37,7 @@ def eid():
     # print("response.encoding:\n{}\n".format(response.encoding))        # Узнать, какую кодировку использует Requests
     # print("response.content:\n{}\n".format(response.content))          # В бинарном виде
     # print("response.json():\n{}\n".format(response.json()))            # JSON Output
+    # json_print_save("DOC\\Main_Response.json", response.json())
 
     # идентификатор сессии
     dict_info = dict(response.json())
