@@ -35,8 +35,12 @@ def report(eid_org):
     #
     # dt = DataTime_to_sec(2021, 1, 29, 0, 0, 0)
     # date_last = dt  # Дата окончания
-    now = datetime.datetime.now().strftime("%d-%m-%Y 00:00:00")  # сегодня 00:00:00
-    yesterday = (datetime.datetime.now() - datetime.timedelta(days=1)).strftime("%d-%m-%Y 00:00:00")  # вчера 00:00:00
+    currentdate = datetime.datetime.today()
+    print(currentdate.combine(currentdate.date(), currentdate.min.time()))  # сегодня 00:00:00
+    date_first = DataTime_to_sec(currentdate.combine(currentdate.date(), currentdate.min.time()))  # Дата окончания
+    yesterday = currentdate.combine((currentdate.date() - datetime.timedelta(days=1)), currentdate.min.time())
+
+    yesterday1 = (datetime.datetime.now() - datetime.timedelta(days=1)).strftime("%d-%m-%Y 00:00:00")  # вчера 00:00:00
 
     params = {"reportResourceId": 21345040, "reportTemplateId": 1, "reportObjectId": 21369701, "reportObjectSecId": 0,
               "interval": {"from": date_first, "to": + date_last, "flags": 0}}
