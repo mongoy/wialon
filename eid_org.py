@@ -1,7 +1,7 @@
 import requests
 import json
 from settings import *
-from token_org import TOKEN
+from settings_org import TOKEN
 
 
 # строка запроса

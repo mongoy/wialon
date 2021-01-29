@@ -1,3 +1,4 @@
+import datetime
 from eid_org import eid, logout
 from list_TM import search_list_TS, search_TS, get_all_rounds, search_list_group_TS
 from reports import search_reports, report
@@ -27,8 +28,22 @@ CONST_SID = eid()
 # 6 Список групп транспортных средств RUB
 # search_list_group_TS(CONST_SID)
 
-# 7 Отправка на e-mail
-send_email()
+
+# 7 Отправка на e-mail RUB
+def send_sub():
+    # files = ["file1_path",                                    # Список файлов, если вложений нет, то files=[]
+    #          "file2_path",
+    #          "dir1_path"]
+    files = ["OUT\\List_group_TM.xlsx"]
+    now = datetime.datetime.now()
+    msg_subj = "Для Юдиной Анастасии. Тестовое письмо"
+    msg_text = "Wialon. Список групп транспортных средств на " + str(now.strftime("%d-%m-%Y %H:%M")) + "\n Алексей"
+    send_email(msg_subj, msg_text, files)
+
+
+send_sub()
+
+# 8
 
 # Выход
 logout(CONST_SID)
