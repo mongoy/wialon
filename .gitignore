@@ -1,6 +1,9 @@
 .idea/
 DOC/
+REP/
 settings_org.py
+probe.ipynb
+probe1.ipynb
 
 # Created by https://www.gitignore.io/api/linux,pycharm,python
 
